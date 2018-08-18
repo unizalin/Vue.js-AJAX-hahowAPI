@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js-AJAX-hahowAPI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Vue.js-AJAX-hahowAPI" >
+<meta property="og:url" content="https://hahow.in/">
+<meta property="og:description" content="Vue.js資料綁定,AJAX串接API" >
+  
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.1.1/css/all.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  
+<div class="navbar">
+  <div class="center_banner"><img src="https://hahow.in/assets/images/publication/proposal-flow-tablet.png"/></div>
+</div>
+<div id="app">
+  <div class="classbox" v-for="cls in classes">
+    <div class="teacher" v-bind:style="'background-image:url('+cls.owner.profileImageUrl+')'"></div>
+    <div class="top">
+      <div class="classpicture" v-bind:style="'background-image:url('+cls.coverImage.url+')'"></div>
+      <div class="tag"> 募資中</div>
+      <div class="bookbtn"><i class="far fa-bookmark"></i></div>
+    </div>
+    <div class="bottom">
+      <h1 class="classtitle"> {{cls.title}}</h1>
+      <div class="texts">
+        <div class="pricerow">
+          <div class="preprice">預購價<span class="orange">NT${{cls.preOrderedPrice}}</span></div>
+          <div class="lastday">剩下<span class="orange">{{parseInt((new Date(cls.proposalDueTime)-new Date('2016/10/14'))/1000/60/60/24)}}天</span></div>
+        </div>
+        <div class="progressbar">
+          <div class="valuebar" v-bind:style="'width:'+100*(cls.numSoldTickets/cls.successCriteria.numSoldTickets)+'%'"></div>
+        </div>
+        <div class="nowpeople">已募資<span class="orange">{{cls.numSoldTickets}}/{{cls.successCriteria.numSoldTickets}}人</span></div>
+      </div>
+      <div class="orangebar"></div>
+    </div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
